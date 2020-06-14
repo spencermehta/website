@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="display-3">Project portfolio</h1>
+<br>
+<div class="row">
+
+{% for object in object_list %}
+<div class="col-lg-4">
+<div class="card mb-3">
+  <div class="card-header">{{ object.get_category_display }}</div>
+  <div class="card-body">
+    <h4 class="card-title">{{ object.title}}</h4>
+    {% comment %} <h6 class="card-subtitle text-muted">Automated internet speed testing and graphing, integrated with Twitter</h6> {% endcomment %}
+  </div>
+  <img style="height: auto; width: 100%; display: block;" src="{{ object.image.url }}" alt="Card image">
+  <div class="card-body">
+    <p class="card-text">{{ object.description }}</p>
+  </div>
+  <div class="card-body">
+    <h6 class="card-subtitle text-muted">Technologies</h6>
+    <p class="card-text">{{ object.technology }}</p>
+  </div>
+  {% if object.category == 'y2' %}
+  <div class="card-body">
+    <h6 class="card-subtitle text-muted">Mark</h6>
+    <p class="card-text">{{ object.mark }}%</p>
+  </div>
+  {% endif %}
+  <div class="card-body">
+    <a href="{{ object.github }}" class="card-link">GitHub</a>
+    <a href="{{ object.get_absolute_url}}" class="card-link">More info</a>
+  </div>
+  <div class="card-footer text-muted">
+    {{ object.date | date:"M Y" }}
+  </div>
+</div>
+</div>
+{% endfor %}
+
+</div>
+{% endblock %}
