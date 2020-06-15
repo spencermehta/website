@@ -1,7 +1,19 @@
 {% extends "base.html" %}
 {% block content %}
-<h1 class="display-3">Project portfolio</h1>
+
+<div class="jumbotron">
+  <h1 class="display-3">Hello, world!</h1>
+  <p class="lead">I'm Spencer, a third year Computer Science student at the University of Warwick.</p>
+  <hr class="my-4">
+  <p>Have a look at a selection of independent and coursework projects I've worked on below, or click to learn more about me.</p>
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="{% url 'about' %}" role="button">About me</a>
+  </p>
+</div>
+
+<h1 >Project portfolio</h1>
 <br>
+
 <div class="row">
 
 {% for object in object_list %}
@@ -9,7 +21,7 @@
 <div class="card mb-3">
   <div class="card-header">{{ object.get_category_display }}</div>
   <div class="card-body">
-    <h4 class="card-title">{{ object.title}}</h4>
+    <h4 class="card-title">{{ object.title }}</h4>
     {% comment %} <h6 class="card-subtitle text-muted">Automated internet speed testing and graphing, integrated with Twitter</h6> {% endcomment %}
   </div>
   <img style="height: auto; width: 100%; display: block;" src="{{ object.image.url }}" alt="Card image">
@@ -26,10 +38,12 @@
     <p class="card-text">{{ object.mark }}%</p>
   </div>
   {% endif %}
+  {% if object.category == 'ind' %}
   <div class="card-body">
+    <h6 class="card-subtitle text-muted">Links</h6>
     <a href="{{ object.github }}" class="card-link">GitHub</a>
-    <a href="{{ object.get_absolute_url}}" class="card-link">More info</a>
   </div>
+  {% endif %}
   <div class="card-footer text-muted">
     {{ object.date | date:"M Y" }}
   </div>

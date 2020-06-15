@@ -21,6 +21,7 @@ from .views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include("projects.urls"))
+    path('', include("projects.urls")),
+    path('about/', AboutView.as_view(), name='about')
 ]
 urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
