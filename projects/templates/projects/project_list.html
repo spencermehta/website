@@ -1,55 +1,34 @@
-{% extends "base.html" %}
+{% extends "base2.html" %}
 {% block content %}
 
-<div class="jumbotron">
-  <h1 class="display-3">Hello, world!</h1>
-  <p class="lead">I'm Spencer, a third year Computer Science student at the University of Warwick.</p>
-  <hr class="my-4">
-  <p>Have a look at a selection of independent and coursework projects I've worked on below, or click to learn more about me.</p>
-  <p class="lead">
-    <a class="btn btn-primary btn-lg" href="{% url 'about' %}" role="button">About me</a>
-  </p>
-</div>
+    <!-- ======= Services Section ======= -->
+    <section class="section">
+      <div class="container">
+        <div class="row justify-content-center text-center mb-4" data-aos="fade-up">
+          <div class="col-5">
+            <h3 class="h3 heading">Portfolio</h3>
+            <p>A selection of independent and coursework projects I've worked on.</p>
+          </div>
+        </div>
+        <div class="row">
 
-<h1 >Project portfolio</h1>
-<br>
+          {% for object in object_list %}
+          <div class="col-12 col-sm-6 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            {% if object.category == 'y2' %}<span class="icofont-university icofont-2x"></span>{% endif %}
+            {% if object.category == 'ind' %}<span class="icofont-brainstorming icofont-2x"></span>{% endif %}
+            <h4 class="h4 mb-2"><br>{{ object.title }}</h4>
+            <p>{{ object.description }}</p>
+            <ul class="list-unstyled list-line">
+              <li>{{ object.get_category_display }}</li>
+              <li>{{ object.technology }}</li>
+              {% if object.category == 'y2' %} <li>Mark: {{ object.mark }}</li> {% endif %}
+              {% if object.category == 'ind' %} <li><a href="{{ object.github }}">GitHub</a></li> {% endif %}
+            </ul>
+          </div>
+          {% endfor %}
 
-<div class="row">
+        </div>
+      </div>
+    </section><!-- End Services Section -->
 
-{% for object in object_list %}
-<div class="col-lg-4">
-<div class="card mb-3">
-  <div class="card-header">{{ object.get_category_display }}</div>
-  <div class="card-body">
-    <h4 class="card-title">{{ object.title }}</h4>
-    {% comment %} <h6 class="card-subtitle text-muted">Automated internet speed testing and graphing, integrated with Twitter</h6> {% endcomment %}
-  </div>
-  <img style="height: auto; width: 100%; display: block;" src="{{ object.image.url }}" alt="Card image">
-  <div class="card-body">
-    <p class="card-text">{{ object.description }}</p>
-  </div>
-  <div class="card-body">
-    <h6 class="card-subtitle text-muted">Technologies</h6>
-    <p class="card-text">{{ object.technology }}</p>
-  </div>
-  {% if object.category == 'y2' %}
-  <div class="card-body">
-    <h6 class="card-subtitle text-muted">Mark</h6>
-    <p class="card-text">{{ object.mark }}%</p>
-  </div>
-  {% endif %}
-  {% if object.category == 'ind' %}
-  <div class="card-body">
-    <h6 class="card-subtitle text-muted">Links</h6>
-    <a href="{{ object.github }}" class="card-link">GitHub</a>
-  </div>
-  {% endif %}
-  <div class="card-footer text-muted">
-    {{ object.date | date:"M Y" }}
-  </div>
-</div>
-</div>
-{% endfor %}
-
-</div>
 {% endblock %}
