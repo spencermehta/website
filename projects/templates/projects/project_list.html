@@ -14,8 +14,7 @@
 
           {% for object in object_list %}
           <div class="col-12 col-sm-6 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-            {% if object.category == 'y2' %}<span class="icofont-university icofont-2x"></span>{% endif %}
-            {% if object.category == 'ind' %}<span class="icofont-brainstorming icofont-2x"></span>{% endif %}
+            <span class="icofont-{{ object.icon }} icofont-2x"></span>
             <h4 class="h4 mb-2"><br>{{ object.title }}</h4>
             <p>{{ object.description }}</p>
             <ul class="list-unstyled list-line">

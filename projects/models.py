@@ -10,6 +10,7 @@ class Project(models.Model):
     github = models.URLField()
     date = models.DateField()
     image = models.ImageField(upload_to='project_img/')
+    icon = models.CharField(max_length=50)
 
     def get_absolute_url(self):
         return reverse("project-detail", kwargs={"pk": self.pk})
