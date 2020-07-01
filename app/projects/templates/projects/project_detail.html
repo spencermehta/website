@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="jumbotron">
+  <h1 class="display-3">{{ object.title }}</h1>
+  <p class="lead"></p>
+  <hr class="my-4">
+  <p>{{ object.technology }}</p>
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="{{ object.github }}" role="button">GitHub</a>
+  </p>
+</div>
+
+<p>{{ object.description }}</p>
+{% endblock %}
