@@ -1,6 +1,8 @@
 asgiref==3.2.7
 astroid==2.4.2
 beautifulsoup4==4.9.1
+boto3
+django-storages
 Django==3.0.7
 django-bootstrap4==2.0.1
 gunicorn==19.10.0
@@ -17,6 +19,5 @@ soupsieve==2.0.1
 sqlparse==0.3.1
 toml==0.10.1
 typed-ast==1.4.1
-whitenoise
 wrapt==1.12.1
 zipp==3.1.0

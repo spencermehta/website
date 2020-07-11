@@ -6,6 +6,8 @@ services:
             context: ./app
             dockerfile: Dockerfile.prod
         command: gunicorn portfolio.wsgi:application --bind 0.0.0.0:8000 --log-file=- --error-log=-
+        ports:
+            - 8000:8000
         volumes:
             - static_volume:/home/app/portfolio/staticfiles
         env_file:
