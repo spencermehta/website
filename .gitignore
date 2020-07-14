@@ -1,4 +1,5 @@
 .env.prod
+app/mysite.log
 .env.prod.db
 .env.dev
 */__pycache__/*
